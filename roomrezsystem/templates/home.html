@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>歡迎光臨教室借用系統！</p>
+
+{% if user.is_authenticated %}
+
+
+<p>你已登入 你好棒棒 給你個讚</p>
+
+{% else %}
+<p>請先<a href="{% url 'login' %}">登入</a>以進行更多操作
+</p>
+
+{% endif %}
+{% endblock %}

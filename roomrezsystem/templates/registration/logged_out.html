@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="alert alert-info">您已登出!!</p>  
+
+<a href="{% url 'login' %}" class="btn btn-primary">請按此處重新登入</a>
+{% endblock %}

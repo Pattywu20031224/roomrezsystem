@@ -1,0 +1,28 @@
+<!-- Navbar begin //-->
+<nav class="navbar navbar-expand-md navbar-dark bg-info mb-2">
+    <!-- 網站標誌 -->
+    <a class="navbar-brand" href="/">教室借用系統</a>
+    <!-- 在小螢幕的設備上顯示可展開/收合導覽選單的按鈕 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- 導覽列選單內容(可收合) -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i> 登出 {{ user.username }}
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{% url 'login' %}" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i>登入
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  <!-- Navbar end //-->
