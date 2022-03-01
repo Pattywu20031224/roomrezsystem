@@ -13,12 +13,8 @@ class RoomList(LoginRequiredMixin, ListView):
 class RoomView(LoginRequiredMixin, DetailView): 
     model = Room
 
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        ctx['log_list'] = Log.objects.filter(
-            book=self.object,
-        ).order_by('-id')
-        return ctx
+    ordering = ['name']    
+    paginate_by = 20
 
 class RoomAdd(LoginRequiredMixin, CreateView):  
     model = Room

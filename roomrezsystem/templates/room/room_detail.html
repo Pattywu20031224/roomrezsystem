@@ -2,17 +2,17 @@
 
 {% block content %}
 <div class="mb-2">
-  <a href="{% url 'room_edit' book.id %}" class="btn btn-sm btn-primary">
+  <a href="{% url 'room_edit' room.id %}" class="btn btn-sm btn-primary">
     <i class="fas fa-edit"></i> 修改
   </a>
-  <a href="{% url 'room_delete' book.id %}" class="btn btn-sm btn-danger">
+  <a href="{% url 'room_delete' room.id %}" class="btn btn-sm btn-danger">
     <i class="fas fa-trash"></i> 刪除
   </a>
 </div>
 <div id="room-detail" class="row">
 
     <div class="">
-       <div class="card-header">{{ book.title }}</div>
+       <div class="card-header">{{ room.title }}</div>
 
     </div>
 </div>

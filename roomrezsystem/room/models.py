@@ -12,3 +12,4 @@ class Room(Model):
     name = CharField('教室名稱', max_length=48)
     detail = TextField('詳細資訊', blank=True)
     status = IntegerField('狀態', default=0 , choices=ST_OPTIONS)
+    #status的選項可能要改一下

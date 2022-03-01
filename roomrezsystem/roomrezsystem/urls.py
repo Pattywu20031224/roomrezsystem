@@ -10,6 +10,7 @@ urlpatterns = [
     path('user/', include('django.contrib.auth.urls')),
     path('developer', TemplateView.as_view(template_name='developer.html')),
     path('teacher/', include('teacher.urls')),
+    path('room/', include('room.urls'))
 ]
 
 # 加入靜態檔案的處理規則
