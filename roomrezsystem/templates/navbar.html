@@ -21,11 +21,15 @@
 
         {% if user.is_authenticated %}
 
+
         <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fas fa-chalkboard"></i> 個人紀錄
-            </a>
+          <a href="{% url 'teacher_list' %}" class="nav-link">
+            <i class="fas fa-chalkboard"></i> 教師列表
+          </a>
         </li> 
+
+        
+
 
         <li class="nav-item">
           <a href="{% url 'logout' %}" class="nav-link">

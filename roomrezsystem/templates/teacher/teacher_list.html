@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-plus"></i> 新增教師
+  </a>
+</div>
+<div id="teacher-list">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>姓名</th><th>電話</th><th>職稱</th><th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for teacher in teacher_list %}
+      <tr>
+        <td>
+          <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
+        </td>
+        <td>{{ teacher.tel }}</td>
+        <td>{{ teacher.role }}</td>
+        <td>
+          <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
+          <a href="{% url 'teacher_edit' teacher.id %}" class="btn btn-sm btn-primary">修改</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
