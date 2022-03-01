@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="alert alert-danger">
+    確定要刪除這筆紀錄嗎？ <br/>
+    {{ object }}
+</p>
+<form action="" method="post">
+  {% csrf_token %}
+  <input type="submit" class="btn btn-danger" value="是的，我要刪除">
+</form>
+{% endblock %}

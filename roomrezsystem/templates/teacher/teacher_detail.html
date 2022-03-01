@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="teacher-detail">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          {{ teacher.realname }}
+        </div>
+        <table class="table table-sm">
+          <tr>
+            <th>連絡電話</th>
+            <td>{{ teacher.tel }}</td>
+          </tr>
+          <tr>
+            <th>職稱</th>
+            <td>{{ teacher.role }}</td>
+          </tr>
+          <tr>
+            <th>借用紀錄</th>
+            <td>
+              {% for log in teacher.log_set.all %}
+
+              {% endfor %}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+</div>
+{% endblock %}
