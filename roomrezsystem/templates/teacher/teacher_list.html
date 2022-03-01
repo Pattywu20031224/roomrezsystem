@@ -10,7 +10,7 @@
   <table class="table table-sm">
     <thead>
       <tr>
-        <th>姓名</th><th>電話</th><th>職稱</th><th>操作</th>
+        <th>姓名</th><th>電話</th><th>卡號</th><th>職稱</th><th>操作</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +20,7 @@
           <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
         </td>
         <td>{{ teacher.tel }}</td>
+        <td>{{ teacher.cardid }}</td>
         <td>{{ teacher.role }}</td>
         <td>
           <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
