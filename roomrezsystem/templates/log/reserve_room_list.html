@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
+    使用中的教室
+  </div>
+  <div class="card-body">
+    {% for log in reserving %}
+    <div>
+      {{ log.reserve|date:"Y/m/d H:i" }}
+      <a href="{% url 'room_view' log.room.id %}">{{ log.room.name }}</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+<div class="card">
+  <div class="card-header">
+    <form action=""  method="get">
+      <div class="form-inline form-group">
+        <label>查詢教室：</label>
+        <input type="text" name="query" class="form-control" placeholder="請輸入關鍵字..." value="{{ query }}"/>
+        <input type="submit" class="form-control btn btn-primary" value="送出"/>
+      </div>  
+    </form>
+  </div>
+  <div id="room-list" class="card-body card-group">
+    {% for room in room_list %}
+    <div class="card shadow-sm">
+      <a href="{% url 'reserve_log' teacher.id room.id %}">
+        <img src="{{ room.preface.url }}" alt="{{ room.name }}" class="card-img-top">
+      </a>
+      <div class="card-body">
+        <div class="card-title">
+          <a href="{% url 'reserve_log' teacher.id room.id %}">{{ room.name }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="card-footer">
+  </div>
+</div>
+{% endblock %}
