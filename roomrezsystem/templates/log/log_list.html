@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'reserve_teacher' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-address-book"></i> 登記預約
+  </a>
+  <a href="{% url 'end_room' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-undo"></i> 結束使用
+  </a>
+</div>
+<div id="log-list">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>登記時間</th>
+        <th>教室</th>
+        <th>預約人</th>
+        <th>結束時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in log_list %}
+      <tr>
+        <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
+        <td>
+          <a href="{% url 'room_view' log.room.id %}">
+            {{ log.room.name }}
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'teacher_view' log.teacher.id %}">
+            {{ log.teacher.realname }}
+          </a>
+        </td>
+        <td>{{ log.end|date:"Y/m/d H:i" }}</td>
+        <td>
+            <a href="{% url 'end_log' log.id %}" class="btn btn-sm btn-primary">
+              <i class="fas fa-undo"></i> 結束使用
+            </a>
+          </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
