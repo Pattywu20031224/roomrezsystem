@@ -5,6 +5,6 @@ class Classes(Model):
     name = CharField('班級名稱', max_length=30)
 
     def __str__(self):
-        return "{} / {} / {}".format(
-            self.name, 
+        return "{}".format(
+            self.name
         )
