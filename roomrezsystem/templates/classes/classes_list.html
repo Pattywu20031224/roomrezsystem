@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'classes_add' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-plus"></i> 新增班級
+  </a>
+</div>
+
+<div id="classes-list" class="card-group">
+  {% for classes in classes_list %}
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+        <div class="card-title">
+            <a href="{% url 'classes_view' classes.id %}">{{ classes.name }}</a>
+        </div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

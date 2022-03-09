@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-2">
+  <a href="{% url 'classes_edit' classes.id %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-edit"></i> 修改
+  </a>
+  <a href="{% url 'classes_delete' classes.id %}" class="btn btn-sm btn-danger">
+    <i class="fas fa-trash"></i> 刪除
+  </a>
+</div>
+<div id="classes-detail" class="row">
+  <div class="col-md-4">
+    <img src="{{ classes.preface.url }}" alt="{{ classes.name }}">
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-header">{{ classes.name }}</div>
+      <table class="table">
+        <tr>
+          <th>詳細資料</th><td>學生列表</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -9,6 +9,6 @@ class Student(Model):
     def __str__(self):
         return "{} / {} / {}".format(
             self.realname, 
-            self.class_name, 
+            self.classes, 
             self.cardid
         )

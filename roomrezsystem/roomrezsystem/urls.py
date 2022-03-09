@@ -11,6 +11,8 @@ urlpatterns = [
     path('developer', TemplateView.as_view(template_name='developer.html')),
     path('teacher/', include('teacher.urls')),
     path('room/', include('room.urls')),
+    path('student/', include('student.urls')),
+    path('classes/', include('classes.urls')),
     path('log/', include('log.urls'))
 ]
 

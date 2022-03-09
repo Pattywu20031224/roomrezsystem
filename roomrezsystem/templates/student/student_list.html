@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-1">
+  <a href="{% url 'student_add' %}" class="btn btn-sm btn-primary">
+    <i class="fas fa-plus"></i> 新增學生
+  </a>
+</div>
+
+<div id="student-list" class="card-group">
+  {% for student in student_list %}
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+        <div class="card-title">
+            <a href="{% url 'student_view' student.id %}">{{ student.realname }}</a>
+        </div>
+        <div class="card-text">{{ student.cardid }}</div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
