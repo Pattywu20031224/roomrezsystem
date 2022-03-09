@@ -11,14 +11,14 @@
 </div>
 <div id="student-detail" class="row">
   <div class="col-md-4">
-    <img src="{{ student.preface.url }}" alt="{{ student.realname }}">
+    <p>{{ student.realname }}</p>
   </div>
   <div class="col-sm-8">
     <div class="card">
       <div class="card-header">{{ student.cardid }}</div>
       <table class="table">
         <tr>
-          <th>學生班級</th><td>{{ student.class }}</td>
+          <th>學生班級</th><td>{{ student.classes }}</td>
         </tr>
       </table>
     </div>
