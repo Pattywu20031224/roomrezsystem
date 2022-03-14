@@ -36,7 +36,9 @@
           <tbody>
             {% for student in student_list %}
             <tr>
-                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a></td> 
+                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a><a href="" class="btn btn-sm btn-primary">
+                  <i class="fas fa-edit"></i> 移除
+                </a></td> 
             </tr>
             {% endfor %} 
           </tbody>
