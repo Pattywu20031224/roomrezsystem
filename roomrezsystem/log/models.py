@@ -9,7 +9,7 @@ from student.models import *
 class Log(Model):
     teacher = ForeignKey(Teacher, CASCADE)
     room = ForeignKey(Room, CASCADE)
-    classes = ForeignKey(Classes, CASCADE)
+    #classes = ForeignKey(Classes, CASCADE)
     reserve = DateTimeField('登記時間', auto_now_add=True)
     end = DateTimeField('結束使用時間', null=True)    
 

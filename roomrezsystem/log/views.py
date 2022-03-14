@@ -53,11 +53,13 @@ class ReserveRoom(LoginRequiredMixin, ListView):
         return ctx
 class ReserveLog(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, **kwargs):
-        teacher = Teacher.objects.get(id=self.kwargs['rid'])
-        room = Room.objects.get(id=self.kwargs['bid'])
-        log = Log(teacher=teacher, room=room)
+        teacher = Teacher.objects.filter(id=self.kwargs['rid'])
+        ch_teacher = teacher[0]
+        room = Room.objects.filter(id=self.kwargs['bid'])
+        ch_room=room[0]
+        log = Log(teacher=ch_teacher, room=ch_room)
         log.save()
-        return reverse('reserve_room', kwargs={'rid': teacher.id})
+        return reverse('reserve_room', kwargs={'rid': ch_teacher.id})
 
 #############################################################
 
