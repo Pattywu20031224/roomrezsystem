@@ -13,14 +13,30 @@
   <div class="col-sm-8">
     <div class="card">
       <div class="card-header">{{ classes.name }}</div>
-      <a href="{% url 'student_add' %}">新增學生</a>
+      
+
       <table class="table">
         <tr>
-          <th>班級學生</th>
+          <th>班級老師
+          <a href="{% url 'classes_tea_relate' classes.id  %}">新增老師</a>
+          </th>
+          <tbody>
+            {% for teacher in teacher_list %}
+            <tr>
+                <td><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a><a href="" class="btn btn-sm btn-primary">
+                  <i class="fas fa-edit"></i> 移除
+                </a></td>
+                
+            </tr>
+            {% endfor %} 
+          </tbody>
+          <th>班級學生
+          <a href="{% url 'classes_stu_relate' classes.id  %}">新增學生</a>
+          </th>
           <tbody>
             {% for student in student_list %}
             <tr>
-                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a></td>
+                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a></td> 
             </tr>
             {% endfor %} 
           </tbody>

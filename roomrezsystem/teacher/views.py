@@ -14,13 +14,13 @@ class TeacherView(LoginRequiredMixin, DetailView):
 
 class TeacherAdd(LoginRequiredMixin, CreateView):    
     model = Teacher
-    fields = '__all__'
+    fields = 'realname','tel','role','cardid'
     template_name = 'form.html'
     success_url = reverse_lazy('teacher_list')
 
 class TeacherEdit(LoginRequiredMixin, UpdateView):   
     model = Teacher
-    fields = '__all__'
+    fields = 'realname','tel','role','cardid'
     template_name = 'form.html'
     success_url = reverse_lazy('teacher_list')
 

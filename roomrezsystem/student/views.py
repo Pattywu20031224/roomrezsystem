@@ -19,13 +19,13 @@ class StudentView(LoginRequiredMixin, DetailView):
 
 class StudentAdd(LoginRequiredMixin, CreateView):  
     model = Student
-    fields = '__all__'
+    fields = 'realname','cardid'
     template_name = 'form.html'
     success_url = reverse_lazy('student_list')
 
 class StudentEdit(LoginRequiredMixin, UpdateView): 
     model = Student
-    fields = '__all__'
+    fields = 'realname','cardid'
     template_name = 'form.html'
     success_url = reverse_lazy('student_list')
 

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="student-list" class="card-group">
+  {% for student in student_list %}
+  
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+        <div class="card-title">
+            <a href="{% url 'classes_relate_student' choosen_classes.id student.id %}">{{ student.realname }}</a>
+        </div>
+        <div class="card-text">{{ student.cardid }}</div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
