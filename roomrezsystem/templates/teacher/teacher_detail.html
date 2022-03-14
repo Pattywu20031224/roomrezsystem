@@ -22,6 +22,14 @@
             <td>{{ teacher.role }}</td>
           </tr>
           <tr>
+            <th>任教班級</th>
+            {% for classes_list in tea_classes %}
+            <tr>
+            <td>{{ classes_list }}</td>
+            </tr>
+            {% endfor %}
+          </tr>
+          <tr>
             <th>借用紀錄</th>
             <td>
               {% for log in teacher.log_set.all %}

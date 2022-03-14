@@ -17,6 +17,13 @@ class StudentView(LoginRequiredMixin, DetailView):
     ordering = ['name']    
     paginate_by = 20
 
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        classes=Student.objects.filter(id=self.kwargs['pk'])
+        stu_classes=classes[0]
+        context['stu_classes']=stu_classes.stu_classes.all
+        return context
+
 class StudentAdd(LoginRequiredMixin, CreateView):  
     model = Student
     fields = 'realname','cardid'

@@ -11,7 +11,12 @@ class TeacherList(LoginRequiredMixin, ListView):
 
 class TeacherView(LoginRequiredMixin, DetailView):   
     model = Teacher
-
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        classes=Teacher.objects.filter(id=self.kwargs['pk'])
+        tea_classes=classes[0]
+        context['tea_classes']=tea_classes.test.all
+        return context
 class TeacherAdd(LoginRequiredMixin, CreateView):    
     model = Teacher
     fields = 'realname','tel','role','cardid'

@@ -15,7 +15,11 @@
         <div class="card-title">
             <a href="{% url 'room_view' room.id %}">{{ room.name }}</a>
         </div>
-        <div class="card-text">{{ room.status }}</div>
+        {% if room.status == 0 %}
+        <div class="card-text">使用中</div>
+        {% else %}
+        <div class="card-text">開放中</div>
+        {% endif %}
         </div>
     </div>
   {% endfor %}

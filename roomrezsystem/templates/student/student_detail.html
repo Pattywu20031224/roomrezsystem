@@ -18,7 +18,12 @@
       <div class="card-header">{{ student.cardid }}</div>
       <table class="table">
         <tr>
-          <th>學生班級</th><td>{{ student.classes }}</td>
+          <th>學生班級</th>
+          {% for students in stu_classes %}
+            <tr>
+            <td>{{ students }}</td>
+            </tr>
+          {% endfor %} 
         </tr>
       </table>
     </div>

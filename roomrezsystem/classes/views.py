@@ -73,6 +73,7 @@ def ClassesManytomanyForStudent(reqeust,pk,stu):
 
     choosen_students=Student.objects.filter(id=stu)
     choosen_classes=Classes.objects.filter(id=pk)
+    
     #choosen_class=Classes
     #choosen_students=Student(realname='gg',cardid='123')
     #choosen_students.save()
