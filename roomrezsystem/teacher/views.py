@@ -15,7 +15,7 @@ class TeacherView(LoginRequiredMixin, DetailView):
         context=super().get_context_data(**kwargs)
         classes=Teacher.objects.filter(id=self.kwargs['pk'])
         tea_classes=classes[0]
-        context['tea_classes']=tea_classes.test.all
+        context['tea_classes']=tea_classes.tea_classes.all
         return context
 class TeacherAdd(LoginRequiredMixin, CreateView):    
     model = Teacher

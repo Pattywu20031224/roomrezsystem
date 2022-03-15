@@ -1,3 +1,4 @@
+from typing_extensions import Self
 from django.urls import reverse
 from django.views.generic import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -5,6 +6,7 @@ from datetime import datetime
 from teacher.models import Teacher
 from room.models import Room
 from .models import Log
+from django.shortcuts import render,redirect
 
 # 借閱記錄列表
 class LogList(LoginRequiredMixin, ListView):
@@ -52,14 +54,33 @@ class ReserveRoom(LoginRequiredMixin, ListView):
         ).select_related('room')
         return ctx
 class ReserveLog(LoginRequiredMixin, RedirectView):
-    def get_redirect_url(self, **kwargs):
-        teacher = Teacher.objects.filter(id=self.kwargs['rid'])
-        ch_teacher = teacher[0]
-        room = Room.objects.filter(id=self.kwargs['bid'])
+    def room_status(self,**kwargs):
+        room=Room.objects.filter(id=self.kwargs['rid'])
         ch_room=room[0]
+        ch_room.delete
+    def get_redirect_url(self, **kwargs):
+        teacher = Teacher.objects.filter(id=self.kwargs['tid'])
+        ch_teacher = teacher[0]
+        room = Room.objects.filter(id=self.kwargs['rid'])
+        ch_room=room[0]
+        for rooms in room:
+            rooms.status=0
+            rooms.save()
         log = Log(teacher=ch_teacher, room=ch_room)
         log.save()
-        return reverse('reserve_room', kwargs={'rid': ch_teacher.id})
+        #return reverse('roomstatus', kwargs={'rid': ch_room.id,'sid':ch_room.status})
+        return reverse('log_list')
+
+'''def RoomStatus(request,rid,sid):
+    room=Room.objects.filter(id=rid)
+    ch_room=room[0]
+    if sid == 0:
+        ch_room.status=1
+    else:
+        ch_room.status=0
+
+    return redirect(reverse('log_list'))'''
+
 
 #############################################################
 
@@ -85,6 +106,11 @@ class EndRoom(LoginRequiredMixin, ListView):
 class EndLog(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, **kwargs):
         log = Log.objects.get(id=self.kwargs['lid'])
+        rooms=Room.objects.filter(id=log.room_id)
+        for room in rooms:
+            room.status=1
+            room.save()
         log.end = datetime.now()
         log.save()
-        return reverse('end_room')
+        return reverse('log_list')
+

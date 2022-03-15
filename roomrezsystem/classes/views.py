@@ -29,7 +29,7 @@ class ClassesView(LoginRequiredMixin, DetailView):
         context['student_list']=student_list
         ch_tea_classes=Classes.objects.filter(id=self.kwargs['pk'])
         tea_classeslist=list(ch_tea_classes)
-        teacher_list = Teacher.objects.filter(test=tea_classeslist[0])
+        teacher_list = Teacher.objects.filter(tea_classes=tea_classeslist[0])
         context['teacher_list']=teacher_list
         return context
 
@@ -96,7 +96,7 @@ def ClassesManytomanyForTeacher(reqeust,pk,tea):
     #choosen_student=Student.objects.filter(id=stu).classes.add(choosen_classes)
     for choosen_teacher in choosen_teachers:
         #choosen_teacher.classes.set(choosen_classes)
-        choosen_teacher.test.add(choosen_classes[0])
+        choosen_teacher.tea_classes.add(choosen_classes[0])
     #for choosen_student in choosen_students:
         
     return redirect(reverse('classes_view',args=str(pk)))
