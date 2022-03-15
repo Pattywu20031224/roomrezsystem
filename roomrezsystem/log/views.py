@@ -12,6 +12,16 @@ from django.shortcuts import render,redirect
 class LogList(LoginRequiredMixin, ListView):
     model = Log
     ordering = ['-reserve']
+
+
+class LogList_using(LoginRequiredMixin, ListView):
+    model = Log
+    template_name = 'log/log_list_using.html'
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        context['log_list_using'] = Log.objects.filter(workstatus=1)
+        return context
     
 class ReserveTeacher(LoginRequiredMixin, ListView):
     model = Teacher
