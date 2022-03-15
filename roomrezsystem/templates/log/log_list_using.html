@@ -8,14 +8,12 @@
   <a href="{% url 'end_room' %}" class="btn btn-sm btn-primary">
     <i class="fas fa-undo"></i> 結束使用
   </a>
-  <a href="{% url 'log_list_using' %}" class="btn btn-sm btn-primary">
-     使用中
-  </a>
 </div>
 
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
     <a href="{% url 'log_list_using' %}" class="btn btn-sm btn-primary">使用中</a>
-
+  </label>
   <label class="btn btn-secondary">
     <input type="radio" name="options" id="option2" autocomplete="off"> 借用中
   </label>
@@ -35,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for log in log_list %}
+      {% for log in log_list_using %}
       <tr>
         <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
         <td>
