@@ -33,8 +33,19 @@
             <th>借用紀錄</th>
             <td>
               {% for log in teacher.log_set.all %}
-
-              {% endfor %}
+                <tr>
+                  <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
+                    <td>
+                      <a href="{% url 'room_view' log.room.id %}">
+                      {{ log.room.name }}
+                      </a>
+                    </td>
+                    <td>
+                      {{ log.teacher.realname }}
+                    </td>
+                  <td>{{ log.end|date:"Y/m/d H:i" }}</td>
+                </tr>
+              {% endfor %} 
             </td>
           </tr>
         </table>

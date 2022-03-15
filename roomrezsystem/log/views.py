@@ -7,6 +7,7 @@ from teacher.models import Teacher
 from room.models import Room
 from .models import Log
 from django.shortcuts import render,redirect
+from datetime import datetime
 
 # 借閱記錄列表
 class LogList(LoginRequiredMixin, ListView):
@@ -76,6 +77,13 @@ class Reverseroom(LoginRequiredMixin, CreateView):
     
     def get_success_url(self):
         return reverse_lazy('room_view', args=[self.kwargs['rid']])
+
+    def get_form(self):
+        form=super().get_form()
+        form.fields['reserve'].widget.input_type = 'datetime-local'
+        form.fields['end'].widget.input_type = 'datetime-local'
+        return form
+
 
 class ReserveLog(LoginRequiredMixin, RedirectView):
     def room_status(self,**kwargs):

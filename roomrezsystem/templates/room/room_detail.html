@@ -25,6 +25,25 @@
           <th>詳細資料</th><td>{{ room.detail }}</td>
         </tr>
       </table>
+      <table class="table">
+        <tr>
+          <th>借用紀錄</th>
+          {% for log in room.log_set.all %}
+            <tr>
+              <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
+              <td>
+                {{ log.room.name }}
+              </td>
+               <td>
+                <a href="{% url 'teacher_view' log.teacher.id %}">
+                {{ log.teacher.realname }}
+                </a>
+              </td>
+              <td>{{ log.end|date:"Y/m/d H:i" }}</td>
+            </tr>
+          {% endfor %} 
+        </tr>
+      </table>
     </div>
   </div>
 </div>

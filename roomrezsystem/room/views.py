@@ -2,6 +2,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
+from datetime import datetime
 
 # Create your views here.
 
@@ -15,6 +16,8 @@ class RoomView(LoginRequiredMixin, DetailView):
 
     ordering = ['name']    
     paginate_by = 20
+
+    
 
 class RoomAdd(LoginRequiredMixin, CreateView):  
     model = Room
