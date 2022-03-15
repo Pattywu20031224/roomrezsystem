@@ -21,7 +21,7 @@
           <a href="{% url 'classes_tea_relate' classes.id  %}">新增老師</a>
           </th>
           <tbody>
-            {% for teacher in teacher_list %}
+            {% for teacher in classes.teacher_set.all %}
             <tr>
                 <td><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a><a href="" class="btn btn-sm btn-primary">
                   <i class="fas fa-edit"></i> 移除
@@ -34,7 +34,7 @@
           <a href="{% url 'classes_stu_relate' classes.id  %}">新增學生</a>
           </th>
           <tbody>
-            {% for student in student_list %}
+            {% for student in classes.student_set.all %}
             <tr>
                 <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a><a href="" class="btn btn-sm btn-primary">
                   <i class="fas fa-edit"></i> 移除

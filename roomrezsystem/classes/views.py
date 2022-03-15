@@ -21,17 +21,10 @@ class ClassesView(LoginRequiredMixin, DetailView):
 
     ordering = ['name']    
     paginate_by = 20
-    def get_context_data(self,**kwargs):
-        context=super().get_context_data(**kwargs)
-        ch_stu_classes=Classes.objects.filter(id=self.kwargs['pk'])
-        stu_classeslist=list(ch_stu_classes)
-        student_list = Student.objects.filter(stu_classes=stu_classeslist[0])
-        context['student_list']=student_list
-        ch_tea_classes=Classes.objects.filter(id=self.kwargs['pk'])
-        tea_classeslist=list(ch_tea_classes)
-        teacher_list = Teacher.objects.filter(tea_classes=tea_classeslist[0])
-        context['teacher_list']=teacher_list
-        return context
+    
+    def get_queryset(self):
+        return Classes.objects.prefetch_related('student_set','teacher_set')
+        
 
 class ClassesAdd(LoginRequiredMixin, CreateView):  
     model = Classes
@@ -71,32 +64,33 @@ class ClassesRelateTeacherList(LoginRequiredMixin,ListView):
 
 def ClassesManytomanyForStudent(reqeust,pk,stu):
 
-    choosen_students=Student.objects.filter(id=stu)
-    choosen_classes=Classes.objects.filter(id=pk)
-    
+    choosen_students=Student.objects.get(id=stu)
+    choosen_classes=Classes.objects.get(id=pk)
+    choosen_students.stu_classes.add(choosen_classes)
     #choosen_class=Classes
     #choosen_students=Student(realname='gg',cardid='123')
     #choosen_students.save()
     #choosen_student=Student.objects.filter(id=stu).classes.add(choosen_classes)
-    for choosen_student in choosen_students:
-        choosen_student.stu_classes.add(choosen_classes[0])
+    #for choosen_student in choosen_students:
+        #choosen_student.stu_classes.add(choosen_classes[0])
     #for choosen_student in choosen_students:
         
     return redirect(reverse('classes_view',args=str(pk)))
 
 def ClassesManytomanyForTeacher(reqeust,pk,tea):
 
-    choosen_teachers=Teacher.objects.filter(id=tea)
-    choosen_classes=Classes.objects.filter(id=pk)
+    choosen_teachers=Teacher.objects.get(id=tea)
+    choosen_classes=Classes.objects.get(id=pk)
+    choosen_teachers.tea_classes.add(choosen_classes)
     #choosen_class=Classes
     #choosen_teacher=Teacher(realname='hentai',cardid='6969')
     #choosen_teacher.save()
     #choosen_class=choosen_classes[0]
     #choosen_teacher.classes.add(choosen_class)
     #choosen_student=Student.objects.filter(id=stu).classes.add(choosen_classes)
-    for choosen_teacher in choosen_teachers:
+    #for choosen_teacher in choosen_teachers:
         #choosen_teacher.classes.set(choosen_classes)
-        choosen_teacher.tea_classes.add(choosen_classes[0])
+        #choosen_teacher.tea_classes.add(choosen_classes[0])
     #for choosen_student in choosen_students:
         
     return redirect(reverse('classes_view',args=str(pk)))

@@ -1,5 +1,5 @@
 from typing_extensions import Self
-from django.urls import reverse
+from django.urls import reverse ,reverse_lazy
 from django.views.generic import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
@@ -29,7 +29,7 @@ class ReserveTeacher(LoginRequiredMixin, ListView):
         ctx = super().get_context_data(**kwargs)
         ctx['query'] = self.request.GET.get('query') or ""
         return ctx
-class ReserveRoom(LoginRequiredMixin, ListView):
+'''class ReserveRoom(LoginRequiredMixin, ListView):
     model = Room
     template_name = 'log/reserve_room_list.html'
 
@@ -52,7 +52,20 @@ class ReserveRoom(LoginRequiredMixin, ListView):
         ctx['reserving'] = curr_teacher.log_set.filter(
             end__isnull=True
         ).select_related('room')
-        return ctx
+        return ctx'''
+class Reverseroom(LoginRequiredMixin, CreateView):
+    model = Log
+    fields = ['teacher','reserve','end']
+    template_name = 'form.html'
+    
+
+    def form_valid(self, form):
+        form.instance.room_id = self.kwargs['rid']
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse_lazy('room_view', args=[self.kwargs['rid']])
+
 class ReserveLog(LoginRequiredMixin, RedirectView):
     def room_status(self,**kwargs):
         room=Room.objects.filter(id=self.kwargs['rid'])
