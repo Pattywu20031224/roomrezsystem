@@ -56,7 +56,8 @@ class ReserveTeacher(LoginRequiredMixin, ListView):
 class Reverseroom(LoginRequiredMixin, CreateView):
     model = Log
     fields = ['teacher','reserve','end']
-    template_name = 'form.html'
+    template_name = 'form.html' 
+    
     
 
     def form_valid(self, form):
