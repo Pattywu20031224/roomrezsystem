@@ -13,8 +13,7 @@ from datetime import datetime
 class LogList(LoginRequiredMixin, ListView):
     model = Log
     ordering = ['-reserve']
-
-
+    
 class LogList_using(LoginRequiredMixin, ListView):
     model = Log
     template_name = 'log/log_list_using.html'
@@ -80,8 +79,8 @@ class Reverseroom(LoginRequiredMixin, CreateView):
 
     def get_form(self):
         form=super().get_form()
-        form.fields['reserve'].widget.input_type = 'datetime-local'
-        form.fields['end'].widget.input_type = 'datetime-local'
+        #form.fields['reserve'].widget.input_type = 'datetime-local'
+        #form.fields['end'].widget.input_type = 'datetime-local'
         return form
 
 
