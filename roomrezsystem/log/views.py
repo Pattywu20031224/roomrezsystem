@@ -7,7 +7,8 @@ from teacher.models import Teacher
 from room.models import Room
 from .models import Log
 from django.shortcuts import render,redirect
-from datetime import datetime
+from datetime import datetime,timezone
+
 
 # 借閱記錄列表
 class LogList(LoginRequiredMixin, ListView):
@@ -65,21 +66,40 @@ class ReserveTeacher(LoginRequiredMixin, ListView):
         return ctx'''
 class Reverseroom(LoginRequiredMixin, CreateView):
     model = Log
-    fields = ['teacher','reserve','end']
+    fields = ['teacher','reserve','end','classes']
     template_name = 'form.html' 
+    
     
     
 
     def form_valid(self, form):
         form.instance.room_id = self.kwargs['rid']
+        logs=Log.objects.filter(room_id=self.kwargs['rid'])
+        in_rez=form.instance.reserve
+        in_end=form.instance.end
+        
+        for log in logs:
+            if (in_rez <= log.end and in_end >= log.reserve) :
+                form.add_error('reserve',"時間衝突")
+                form.add_error('end',"時間衝突")
+                return super().form_invalid(form)
+            if ( in_rez < datetime.now(timezone.utc) or in_end <datetime.now(timezone.utc)):
+                form.add_error('reserve',"無法預約過去時間")
+                form.add_error('end',"無法預約過去時間")
+                return super().form_invalid(form)
+            if (in_rez >= in_end ):
+                form.add_error('reserve',"起始時間需在截止時間之前")
+                form.add_error('end',"截止時間需在起始時間之後")
+
         return super().form_valid(form)
+        
     
     def get_success_url(self):
         return reverse_lazy('room_view', args=[self.kwargs['rid']])
 
     def get_form(self):
         form=super().get_form()
-        #form.fields['reserve'].widget.input_type = 'datetime-local'
+        #form.fields['reserve'].widget.input_id = 'reserve'
         #form.fields['end'].widget.input_type = 'datetime-local'
         return form
 

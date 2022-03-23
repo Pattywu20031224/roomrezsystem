@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <form action="" method="post" enctype="multipart/form-data">
@@ -13,5 +14,12 @@ var inputs = document.querySelectorAll('table input, table select, table textare
 inputs.forEach(function(item) {
   item.classList.add('form-control');
 });
+
 </script>
+{% endblock %}
+{% block footer_scripts%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="{% static '/js/datetimepicker.js' %}"></script>
 {% endblock %}
