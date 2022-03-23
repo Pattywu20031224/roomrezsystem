@@ -18,27 +18,23 @@
       <table class="table">
         <tr>
           <th>班級老師
-          <a href="{% url 'classes_tea_relate' classes.id  %}">新增老師</a>
+          <a href="{% url 'classes_tea_relate' classes.id  %}"><i class="fas fa-user-plus"></i> 新增老師</a>
           </th>
           <tbody>
             {% for teacher in classes.teacher_set.all %}
             <tr>
-                <td><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a><a href="" class="btn btn-sm btn-primary">
-                  <i class="fas fa-edit"></i> 移除
-                </a></td>
+                <td><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a></td>
                 
             </tr>
             {% endfor %} 
           </tbody>
           <th>班級學生
-          <a href="{% url 'classes_stu_relate' classes.id  %}">新增學生</a>
+          <a href="{% url 'classes_stu_relate' classes.id  %}"><i class="fas fa-user-plus"></i>新增學生</a>
           </th>
           <tbody>
             {% for student in classes.student_set.all %}
             <tr>
-                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a><a href="" class="btn btn-sm btn-primary">
-                  <i class="fas fa-edit"></i> 移除
-                </a></td> 
+                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a></td> 
             </tr>
             {% endfor %} 
           </tbody>

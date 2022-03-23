@@ -7,7 +7,7 @@ from log.views import *
 
 # Create your views here.
 
-class RoomList(LoginRequiredMixin, ListView):   
+class RoomList(ListView):   
     model = Room    
     paginate_by = 8
     def get_context_data(self, **kwargs):
@@ -30,7 +30,7 @@ class RoomList(LoginRequiredMixin, ListView):
         return context
 
 
-class RoomView(LoginRequiredMixin, DetailView): 
+class RoomView(DetailView): 
     model = Room
 
     ordering = ['name']    
