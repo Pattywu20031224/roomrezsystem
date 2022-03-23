@@ -1,9 +1,10 @@
-from typing_extensions import Self
+# from typing_extensions import Self
 from django.urls import reverse ,reverse_lazy
 from django.views.generic import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
 from teacher.models import Teacher
+from classes.models import Classes
 from room.models import Room
 from .models import Log
 from django.shortcuts import render,redirect
@@ -65,8 +66,8 @@ class ReserveTeacher(LoginRequiredMixin, ListView):
         return ctx'''
 class Reverseroom(LoginRequiredMixin, CreateView):
     model = Log
-    fields = ['teacher','reserve','end']
-    template_name = 'form.html' 
+    fields = ['teacher','reserve','end','classes']
+    template_name = 'log/logform.html' 
     
     
 

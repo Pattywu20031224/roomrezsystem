@@ -14,7 +14,7 @@ class Log(Model):
     ]
     teacher = ForeignKey(Teacher, CASCADE)
     room = ForeignKey(Room, CASCADE)
-    #classes = ForeignKey(Classes, CASCADE)
+    classes = ForeignKey(Classes, CASCADE)
     reserve = DateTimeField('登記時間', null=True)
     end = DateTimeField('結束使用時間', null=True)    
     workstatus = IntegerField('資料狀態', default=0 , choices=ST_OPTIONS)
