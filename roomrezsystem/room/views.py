@@ -35,7 +35,21 @@ class RoomView(DetailView):
 
     ordering = ['name']    
     paginate_by = 20
-    
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        logs=Log.objects.filter(room_id=self.kwargs['pk'])
+        for log in logs:
+            if log.end < datetime.now(timezone.utc):
+                log.workstatus=0
+                log.save()
+            elif log.reserve > datetime.now(timezone.utc):
+                log.workstatus=2
+                log.save()
+            elif log.reserve <= datetime.now(timezone.utc) and log.end >= datetime.now(timezone.utc) :
+                log.workstatus=1
+                log.save()
+        context['logs']=Log.objects.order_by('-reserve').filter(room_id=self.kwargs['pk'])
+        return context
 
 
 class RoomAdd(LoginRequiredMixin, CreateView):  

@@ -28,7 +28,7 @@
       <table class="table">
         <tr>
           <th>借用紀錄</th>
-          {% for log in room.log_set.all %}
+            {% for log in logs %}
             <tr>
               <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
               <td>
@@ -40,8 +40,16 @@
                 </a>
               </td>
               <td>{{ log.end|date:"Y/m/d H:i" }}</td>
+              {% if log.workstatus == 2 %}
+              <td><font color="green">已預約</font></td>
+              {% elif log.workstatus == 1 %}
+              <td><font color="red">進行中</font></td>
+              {% elif log.workstatus == 0 %}
+              <td><font color="blue">使用結束</font></td>
+              {% endif %}
             </tr>
-          {% endfor %} 
+            {% endfor %}
+            
         </tr>
       </table>
     </div>
