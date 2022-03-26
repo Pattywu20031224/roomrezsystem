@@ -1,0 +1,10 @@
+<html>
+ <body>
+    <form action="submit.php" method="get">
+    {% csrf_token %}
+    id:<input type="text" name="id"><BR>    
+    room:<input type="text" name="room"><BR>
+    <input type="submit" value="送出">
+    </form>
+ </body>
+</html>
