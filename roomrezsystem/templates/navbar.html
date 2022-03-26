@@ -1,4 +1,8 @@
 <!-- Navbar begin //-->
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
 <nav class="navbar navbar-expand-md navbar-dark bg-info mb-2">
     <!-- 網站標誌 -->
     <a class="navbar-brand" href="/"><i class="fas fa-home"></i> 教室借用系統</a>
@@ -8,60 +12,33 @@
     </button>
     <!-- 導覽列選單內容(可收合) -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
 
-        <li class="nav-item">
             <a href="{% url 'room_list' %}" class="nav-link">
               <i class="fas fa-chalkboard"></i> 教室列表
             </a>
-        </li>   
-
-         
-
 
         {% if user.is_authenticated %}
 
-
-        <li class="nav-item">
           <a href="{% url 'teacher_list' %}" class="nav-link">
             <i class="fas fa-chalkboard-teacher"></i> 教師列表
           </a>
-        </li> 
 
-        
-        <li class="nav-item"> 
           <a href="{% url 'student_list' %}" class="nav-link">
             <i class="fas fa-user-graduate"></i> 學生列表
           </a>
-        </li> 
-        
-
-        <li class="nav-item">
+  
           <a href="{% url 'classes_list' %}" class="nav-link">
             <i class="fas fa-address-book"></i> 班級列表
           </a>
-        </li> 
-<!---
-        <li class="nav-item">
-          <a href="{% url 'log_list' %}" class="nav-link">
-            <i class="fas fa-list"></i> 預約紀錄
-          </a>
-        </li> 
--->
-
-        <li class="nav-item">
+          
           <a href="{% url 'logout' %}" class="nav-link">
             <i class="fas fa-sign-out-alt"></i> 登出 {{ user.username }}
           </a>
-        </li>
         {% else %}
-        <li class="nav-item">
           <a href="{% url 'login' %}" class="nav-link">
             <i class="fas fa-sign-in-alt"></i>登入
           </a>
-        </li>
         {% endif %}
-      </ul>
     </div>
   </nav>
   <!-- Navbar end //-->

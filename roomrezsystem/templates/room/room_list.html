@@ -7,21 +7,19 @@
   </a>
 </div>
 
-<div id="room-list" class="card-group">
+<div id="room-list" class="room">
   {% for room in room_list %}
-    <div class="card shadow-sm">
-
-        <div class="card-body">
-        <div class="card-title">
-            <a href="{% url 'room_view' room.id %}">{{ room.name }}</a>
-        </div>
-            {% if room.status == 0 %}
-              <div class="card-text">使用中</div>
-            {% else %}
-              <div class="card-text">開放使用</div>
-            {% endif %}
-        </div>
-    </div>
+      <div class="card shadow-sm" onclick="location.href='{% url 'room_view' room.id %}';" style="cursor:pointer;">
+                <div class="card-title">
+                  <a href="{% url 'room_view' room.id %}">{{ room.name }}</a>
+                </div>
+                {% if room.status == 0 %}
+                  <div class="card-text"><font color="gray">使用中</font></div>
+                {% else %}
+                  <div class="card-text"><font color="green">開放使用</font></div>
+                {% endif %}
+      </div>
+    
   {% endfor %}
 </div>
 

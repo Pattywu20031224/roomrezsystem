@@ -11,13 +11,13 @@
   <a href="{% url 'room_delete' room.id %}" class="btn btn-sm btn-danger">
     <i class="fas fa-trash"></i> 刪除
   </a>
-  
+
 </div>
 <div id="room-detail" class="row">
-  <div class="col-md-4">
-    <img src="{{ room.preface.url }}" alt="{{ room.name }}">
+  <div class="pic">
+    <img src="{{ room.preface.url }}" alt="{{ room.name }}" width="200" height="200">
   </div>
-  <div class="col-sm-8">
+  <div class="logs">
     <div class="card">
       <div class="card-header">{{ room.name }}</div>
       <table class="table">
@@ -25,6 +25,26 @@
           <th>詳細資料</th><td>{{ room.detail }}</td>
         </tr>
       </table>
+      <div class="table">
+        <h3>借用紀錄</h3>
+        {% for log in logs %}
+        <div class="table-item">
+          <p>{{ log.reserve|date:"Y/m/d H:i" }}</p>
+          <p>{{ log.room.name }}</p>
+          <p><a href="{% url 'teacher_view' log.teacher.id %}">{{ log.teacher.realname }}</a></p>
+          <p>{{ log.end|date:"Y/m/d H:i" }}</p>
+          
+            {% if log.workstatus == 2 %}
+              <p><font color="green">已預約</font></p>
+              {% elif log.workstatus == 1 %}
+              <p><font color="red">進行中</font></p>
+              {% elif log.workstatus == 0 %}
+              <p><font color="blue">使用結束</font></p>
+            {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <!--
       <table class="table">
         <tr>
           <th>借用紀錄</th>
@@ -52,6 +72,7 @@
             
         </tr>
       </table>
+      -->
     </div>
   </div>
 </div>
