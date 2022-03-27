@@ -18,8 +18,8 @@
 }
 
 .room .card:hover{
-    padding:15px;
-    background-color: rgb(65, 62, 62);
+    transform: translateY(-10px);
+    background-color: rgba(105, 101, 101, 0.445);
 }
 
 .room .card a{

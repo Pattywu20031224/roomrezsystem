@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+body{
+    background-image: url("../picture/login_background.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+.login-form{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius:10px;
+    box-shadow:0 0 10px rgb(0, 0, 0);
+}
+
+.login-form h1{
+    color: rgb(221, 221, 221);
+    font-size:30px;
+    text-align:center;
+    margin:20px;
+    border-bottom:3px solid rgba(195, 195, 195, 0.623);
+}
+
+.login-form form{
+    padding:0 40px;
+    box-sizing:border-box;
+    margin:50px;
+}
+
+.login-form form .txt{
+    position:relative;
+    height:40px;
+    border-bottom:2px solid rgba(195, 195, 195, 0.623);
+    margin-top:20px;
+}
+
+.login-form form label{
+    position:absolute;
+    top:10px;
+    left:5px;
+    pointer-events: none;
+    font-size:16px;
+    color: whitesmoke;
+    transition:0.5s;
+}
+
+.login-form form input{
+    width:100%;
+    height:40px;
+    border:none;
+    background:none;
+    outline:none;
+}
+
+.login-form form .txt input:focus ~label{
+    top:-12px;
+}
+
+
+.login-form form .txt input:hover ~label{
+    top:-12px;
+}
+
+
+.login-form form .login-button{
+    font-size:20px;
+    color: rgb(47, 47, 47);
+    background-color: rgba(90, 90, 90, 0.472);
+    border-radius:10px;
+    margin-top:15px;
+    transition:0.3s;
+}
+
+.login-form form .login-button input{
+    font-size:16px;
+    color: aliceblue; 
+}
+
+.login-form form .login-button:hover{
+    background-color:rgba(175, 175, 175, 0.493);
+    border-radius:20px;
+}
+

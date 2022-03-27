@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-danger">
+  {{ form.errors }}
+</div>
+{% endif %}
+<div class="login-form">
+  <h1>登入</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div id="login-form" class="form-inline">
+      <div class="txt">
+        <input type="text" name="username" placeholder="請輸入您的帳號" autofocus>
+      </div>
+      <div class="txt">
+        <input type="password" name="password" placeholder="請輸入您的密碼">
+      </div>
+      <div class="login-button">
+        <input type="submit" class="btn btn-primary" value="登入">
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+
+<!--
+{% block custom_scripts %}
+<script>
+add_css_class('#login-form input[placeholder]', 'form-control', 'mr-2');
+add_css_class('#login-form .btn', 'mr-2');
+</script>
+{% endblock %} 
+-->

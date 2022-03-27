@@ -1,24 +1,42 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap" rel="stylesheet">
+  <title>教室預約系統</title>
+</head>
+<body>
 
-{% block content %}
-{% if form.errors %}
-<div class="alert alert-danger">
-  {{ form.errors }}
-</div>
-{% endif %}
-<form action="" method="POST">
-  {% csrf_token %}
-  <div id="login-form" class="form-inline">
-    <input type="text" name="username" placeholder="請輸入您的帳號" autofocus>
-    <input type="password" name="password" placeholder="請輸入您的密碼">
-    <input type="submit" class="btn btn-primary" value="登入">
-  </div>
-</form>
-{% endblock %}
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      {{ form.errors }}
+    </div>
+    {% endif %}
+    <div class="login-form">
+      <h1>登入</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div id="login-form" class="form-inline">
+          <div class="txt">
+            <input type="text" name="username" autofocus>
+            <label>帳號</label>
+          </div>
+          <div class="txt">
+            <input type="password" name="password">
+            <label>密碼</label>
+          </div>
+          <div class="login-button">
+            <input type="submit" class="btn btn-primary" value="登入">
+          </div>
+        </div>
+      </form>
+    </div>
 
-{% block custom_scripts %}
-<script>
-add_css_class('#login-form input[placeholder]', 'form-control', 'mr-2');
-add_css_class('#login-form .btn', 'mr-2');
-</script>
-{% endblock %}
+</body>
+</html>
