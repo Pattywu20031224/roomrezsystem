@@ -12,32 +12,44 @@
     </button>
     <!-- 導覽列選單內容(可收合) -->
     <div class="collapse navbar-collapse" id="navbarNav">
-
+          <div class="nav-item" onclick="location.href='{% url 'room_list' %}';">
             <a href="{% url 'room_list' %}" class="nav-link">
               <i class="fas fa-chalkboard"></i> 教室列表
             </a>
-
+          </div>
         {% if user.is_authenticated %}
-
-          <a href="{% url 'teacher_list' %}" class="nav-link">
-            <i class="fas fa-chalkboard-teacher"></i> 教師列表
-          </a>
-
-          <a href="{% url 'student_list' %}" class="nav-link">
-            <i class="fas fa-user-graduate"></i> 學生列表
-          </a>
-  
-          <a href="{% url 'classes_list' %}" class="nav-link">
-            <i class="fas fa-address-book"></i> 班級列表
-          </a>
+          <div class="nav-item" onclick="location.href='{% url 'teacher_list' %}';">
+            <a href="{% url 'teacher_list' %}" class="nav-link">
+              <i class="fas fa-chalkboard-teacher"></i> 教師列表
+            </a>
+          </div>
           
-          <a href="{% url 'logout' %}" class="nav-link">
-            <i class="fas fa-sign-out-alt"></i> 登出 {{ user.username }}
-          </a>
+          <div class="nav-item" onclick="location.href='{% url 'student_list' %}';">
+            <a href="{% url 'student_list' %}" class="nav-link">
+              <i class="fas fa-user-graduate"></i> 學生列表
+            </a>
+          </div>
+
+
+          <div class="nav-item" onclick="location.href='{% url 'classes_list' %}';">
+            <a href="{% url 'classes_list' %}" class="nav-link">
+              <i class="fas fa-address-book"></i> 班級列表
+            </a>
+          </div>
+
+
+          <div class="nav-item" onclick="location.href='{% url 'logout' %}';">
+            <a href="{% url 'logout' %}" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i> 登出 {{ user.username }}
+            </a>
+          </div>
+         
         {% else %}
-          <a href="{% url 'login' %}" class="nav-link">
-            <i class="fas fa-sign-in-alt"></i>登入
-          </a>
+          <div class="nav-item" onclick="location.href='{% url 'login' %}';">
+            <a href="{% url 'login' %}" class="nav-link">
+              <i class="fas fa-sign-in-alt"></i>登入
+            </a>
+          </div>
         {% endif %}
     </div>
   </nav>

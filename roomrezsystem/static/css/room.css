@@ -29,20 +29,53 @@
 
 /*room detail*/
 
+
+.room-container{
+    margin-top:100px;
+}
+
+.room-mb-2{
+    height:30px;
+    margin:10px;
+    padding:10px;
+}
+
+.room-mb-2 a{
+    padding:12px;
+    margin:5px;
+    line-height:30px; 
+    transition: 0.3s;
+    text-decoration:none;
+    background-color:rgb(236, 218, 182,0.7);
+    border-radius:20px;
+    color: rgb(32, 32, 32);
+}
+
+.room-mb-2 a:hover{
+    background-color:rgb(236, 218, 182);
+}
+
 .card-header{
+    font-size:26px;
     text-align: center;
     padding:10px;
-    background-color:rgb(187, 187, 187);
+    background-color:rgb(187, 187, 187,0.7);
+    border-radius:20px;
 }
 
 .table h3{
+    padding:5px;
+    font-size:28px;
     text-align: center;
+    margin:20px;
+    color: rgb(202, 202, 202);
+    border-bottom: 2px solid rgb(202, 202, 202);
 }
 
 .table .table-item{
-    margin:4px;
-    border-radius:10px;
-    background-color: rgb(124, 124, 124);
+    margin:5px;
+    border-radius:20px;
+    background-color: rgb(93, 93, 93,0.7);
     justify-content:center;
     display:flex;
 }
@@ -54,15 +87,24 @@
 
 #room-detail {
     display:flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter:blur(3px);
+    border-radius:20px;
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
 }
 
 #room-detail .pic{
     width:30%;
-    border:3px solid black;
+    display:flex;
+}
+
+#room-detail .pic img{
+    margin:auto;
 }
 
 #room-detail .logs{
     padding:10px;
     width:70%;
-    background-color: rgb(78, 78, 78);
 }
