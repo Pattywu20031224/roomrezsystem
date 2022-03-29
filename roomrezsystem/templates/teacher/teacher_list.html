@@ -1,34 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mb-1">
-  <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
-    <i class="fas fa-user-plus"></i> 新增教師
-  </a>
-</div>
-<div id="teacher-list">
-  <table class="table table-sm">
-    <thead>
-      <tr>
-        <th>姓名</th><th>電話</th><th>卡號</th><th>職稱</th><th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<div class="teacher-container">
+  <div class="mb-1">
+    <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
+      <i class="fas fa-user-plus"></i> 新增教師
+    </a>
+  </div>
+
+  <div class="teacher-list">
+    <ul class="table table-sm">
+
+      <li class="table-header">
+        <div class="item">姓名</div>
+        <div class="item">電話</div>
+        <div class="item">卡號</div>
+        <div class="item">職稱</div>
+        <div class="item">操作</div>
+      </li>
+
+      
       {% for teacher in teacher_list %}
-      <tr>
-        <td>
-          <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
-        </td>
-        <td>{{ teacher.tel }}</td>
-        <td>{{ teacher.cardid }}</td>
-        <td>{{ teacher.role }}</td>
-        <td>
-          <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
-          <a href="{% url 'teacher_edit' teacher.id %}" class="btn btn-sm btn-primary">修改</a>
-        </td>
-      </tr>
+        <li class="table-row">
+          <div class="item">
+            <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
+          </div>
+          <div class="item">{{ teacher.tel }}</div>
+          <div class="item">{{ teacher.cardid }}</div>
+          <div class="item">{{ teacher.role }}</div>
+          <div class="item">
+            <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
+            <a href="{% url 'teacher_edit' teacher.id %}" class="btn btn-sm btn-primary">修改</a>
+          </div>
+        </li>
       {% endfor %}
-    </tbody>
-  </table>
+      
+
+    </ul>
+  </div>
+
 </div>
 {% endblock %}
