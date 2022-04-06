@@ -5,6 +5,7 @@ from classes.models import *
 
 def CheckForm(request):
     return render(request, 'check/checkform.html')
+    
 def Check(request):
     id=request.GET.get('id','no_id')
     room=request.GET.get('room','no_room')

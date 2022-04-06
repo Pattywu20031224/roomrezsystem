@@ -2,13 +2,18 @@
 {% load static %}
 
 {% block content %}
-<form action="" method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <table class="table table-sm">
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="送出" />
-</form>
+<div class="form">
+  <div class="card">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table class="table">
+        {{ form.as_table }}
+      </table>
+      <input class="form-btn" type="submit" value="送出"> 
+    </form>
+  </div>
+</div>
+
 <script>
 var inputs = document.querySelectorAll('table input, table select, table textarea');
 inputs.forEach(function(item) {

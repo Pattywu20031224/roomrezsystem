@@ -12,26 +12,26 @@
     </button>
     <!-- 導覽列選單內容(可收合) -->
     <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="nav-item" onclick="location.href='{% url 'room_list' %}';">
+          <div class="nav-item nav-room" onclick="location.href='{% url 'room_list' %}';">
             <a href="{% url 'room_list' %}" class="nav-link">
               <i class="fas fa-chalkboard"></i> 教室列表
             </a>
           </div>
         {% if user.is_authenticated %}
-          <div class="nav-item" onclick="location.href='{% url 'teacher_list' %}';">
+          <div class="nav-item nav-teacher" onclick="location.href='{% url 'teacher_list' %}';">
             <a href="{% url 'teacher_list' %}" class="nav-link">
               <i class="fas fa-chalkboard-teacher"></i> 教師列表
             </a>
           </div>
           
-          <div class="nav-item" onclick="location.href='{% url 'student_list' %}';">
+          <div class="nav-item nav-student" onclick="location.href='{% url 'student_list' %}';">
             <a href="{% url 'student_list' %}" class="nav-link">
               <i class="fas fa-user-graduate"></i> 學生列表
             </a>
           </div>
 
 
-          <div class="nav-item" onclick="location.href='{% url 'classes_list' %}';">
+          <div class="nav-item nav-classes" onclick="location.href='{% url 'classes_list' %}';">
             <a href="{% url 'classes_list' %}" class="nav-link">
               <i class="fas fa-address-book"></i> 班級列表
             </a>

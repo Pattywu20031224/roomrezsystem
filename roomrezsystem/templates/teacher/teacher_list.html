@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+.collapse .nav-teacher{
+    background-color: rgb(103, 196, 252);
+}
+</style>
 <div class="mb-1">
   <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
     <i class="fas fa-user-plus"></i> 新增教師

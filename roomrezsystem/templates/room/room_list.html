@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+.collapse .nav-room{
+  background-color: rgb(103, 196, 252);
+;
+}
+</style>
 <div class="mb-1">
   <a href="{% url 'room_add' %}" class="btn btn-sm btn-primary">
     <i class="fas fa-plus"></i> 新增借用教室
@@ -8,17 +14,23 @@
 </div>
 
 <div id="room-list" class="room">
+
   {% for room in room_list %}
-      <div class="card shadow-sm" onclick="location.href='{% url 'room_view' room.id %}';" style="cursor:pointer;">
-                <div class="card-title">
-                  <a href="{% url 'room_view' room.id %}">{{ room.name }}</a>
-                </div>
-                {% if room.status == 0 %}
-                  <div class="card-text"><font color="gray">使用中</font></div>
-                {% else %}
-                  <div class="card-text"><font color="green">開放使用</font></div>
-                {% endif %}
-      </div>
+    <div class="card shadow-sm" onclick="location.href='{% url 'room_view' room.id %}';" style="cursor:pointer;">
+        <div class="card-title" >
+          <a href="{% url 'room_view' room.id %}">{{ room.name }}</a>
+        </div>
+        {% if room.status == 0 %}
+          <div ><font color="gray">使用中</font></div>
+        {% else %}
+          <div ><font color="green">開放使用</font></div>
+        {% endif %}
+
+        <img src="https://64.media.tumblr.com/cc8aa34375905a35fa43ae192db391a2/tumblr_pdgssadKfA1twxnwno6_540.jpg">
+       
+    </div>
+  
+  
     
   {% endfor %}
 </div>

@@ -1,0 +1,83 @@
+/*student lsit*/
+.student-container{
+    margin-top:10px;
+}
+.mb-1{
+    height:30px;
+    margin:10px;
+    padding:10px;
+}
+
+.mb-1 a{
+    
+    padding: 12px;
+    margin: 5px;
+    line-height: 30px;
+    transition: 0.3s;
+    text-decoration: none;
+    background-color: rgb(113, 215, 255,0.7);
+    border-radius: 20px;
+    color: rgb(32, 32, 32);
+    backdrop-filter: blur(3px);
+}
+
+.mb-1 a:hover{
+    background-color: rgb(113, 215, 255);
+}
+
+.student-content{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+.student-list{
+    width: 100%;
+    background-color: rgba(209, 243, 251, 0.5);
+    backdrop-filter:blur(3px);
+    border-radius:20px;
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+}
+
+
+.student-list .table{   
+    border-radius: 20px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+}
+
+.student-list .table .table-header{
+    margin: 10px;
+    background-color: aliceblue;
+    border-radius:20px;
+    font-size:20px;
+    display: flex;
+    justify-content:flex-start;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.52);
+}
+
+.student-list .table .table-header .item{
+    width:50%;
+    text-align:center;
+    font-size:22px;
+}
+/* ---------- */
+
+.student-list .table .table-row{
+    margin:10px;
+    display: flex;
+    justify-content:flex-start;
+    background-color: rgba(209, 243, 251, 0.5);
+    font-size:20px;
+    backdrop-filter:blur(3px);
+    border-radius:20px;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.52);
+}
+
+.student-list .table .table-row .item{
+    width:50%;
+    font-size:22px;
+    text-align:center;
+}

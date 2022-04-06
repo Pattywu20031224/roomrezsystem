@@ -1,24 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mb-1">
-  <a href="{% url 'student_add' %}" class="btn btn-sm btn-primary">
-    <i class="fas fa-user-plus"></i> 新增學生
-  </a>
+<style>
+a {
+    text-decoration:none;
+}
+</style>
+<style>
+.collapse .nav-student{
+    background-color: rgb(103, 196, 252);
+}
+</style>
+<div class="student-container">
+  <div class="mb-1">
+    <a href="{% url 'student_add' %}" class="btn btn-sm btn-primary">
+      <i class="fas fa-user-plus"></i> 新增學生
+    </a>
+  </div>
+</div>
+<div class="student-content">
+ <div class="student-list">
+    <ul class="table table">
+      <li class="table-header">
+        <div class="item">姓名</div>
+        <div class="item">卡號</div>
+      </li>
+      {% for student in student_list %}
+        <li class="table-row">
+          <div class="item" ><a style="color:black;" href="{% url 'student_view' student.id %}">{{ student.realname }}</a></div>
+          <div class="item" style="color:black;">{{ student.cardid }}</div>
+        </li>
+            <!---<div class="card-body">
+            <div class="card-title">
+                <a href="{% url 'student_view' student.id %}">{{ student.realname }}</a>
+            </div>
+            <div class="card-text">{{ student.cardid }}</div>
+            </div>-->
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 
-<div id="student-list" class="card-group">
-  {% for student in student_list %}
-    <div class="card shadow-sm">
-
-        <div class="card-body">
-        <div class="card-title">
-            <a href="{% url 'student_view' student.id %}">{{ student.realname }}</a>
-        </div>
-        <div class="card-text">{{ student.cardid }}</div>
-        </div>
-    </div>
-  {% endfor %}
-</div>
-
+  
 {% endblock %}

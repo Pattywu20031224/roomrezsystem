@@ -14,21 +14,7 @@
     </a>
   </div>
   <div id="room-detail" class="row">
-    <div class="pic">
-      <img src="{{ room.preface.url }}" alt="{{ room.name }}" width="250" height="250">
-    </div>
-    <div class="logs">
-      <div class="card">
         <div class="card-header">{{ room.name }}</div>
-
-        <!--
-          <table class="table">
-            <tr>
-              <th>詳細資料</th><td>{{ room.detail }}</td>
-            </tr>
-          </table>
-        -->
-
         <div class="table">
           <h3>借用紀錄</h3>
           {% for log in logs %}
@@ -48,38 +34,6 @@
           </div>
           {% endfor %}
         </div>
-</div>
-    
-      <!--
-      <table class="table">
-        <tr>
-          <th>借用紀錄</th>
-            {% for log in logs %}
-            <tr>
-              <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
-              <td>
-                {{ log.room.name }}
-              </td>
-               <td>
-                <a href="{% url 'teacher_view' log.teacher.id %}">
-                {{ log.teacher.realname }}
-                </a>
-              </td>
-              <td>{{ log.end|date:"Y/m/d H:i" }}</td>
-              {% if log.workstatus == 2 %}
-              <td><font color="green">已預約</font></td>
-              {% elif log.workstatus == 1 %}
-              <td><font color="red">進行中</font></td>
-              {% elif log.workstatus == 0 %}
-              <td><font color="blue">使用結束</font></td>
-              {% endif %}
-            </tr>
-            {% endfor %}
-            
-        </tr>
-      </table>
-      -->
-    </div>
   </div>
 </div>
 
