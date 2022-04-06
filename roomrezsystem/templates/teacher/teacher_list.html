@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 <style>
 .collapse .nav-teacher{
     background-color: rgb(103, 196, 252);
@@ -19,21 +20,46 @@
       </tr>
     </thead>
     <tbody>
+=======
+
+<div class="teacher-container">
+  <div class="mb-1">
+    <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
+      <i class="fas fa-user-plus"></i> 新增教師
+    </a>
+  </div>
+
+  <div class="teacher-list">
+    <ul class="table table-sm">
+
+      <li class="table-header">
+        <div class="item">姓名</div>
+        <div class="item">電話</div>
+        <div class="item">卡號</div>
+        <div class="item">職稱</div>
+        <div class="item">操作</div>
+      </li>
+
+      
+>>>>>>> cad74c0b07163019f80d971baa8307c97c306be4
       {% for teacher in teacher_list %}
-      <tr>
-        <td>
-          <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
-        </td>
-        <td>{{ teacher.tel }}</td>
-        <td>{{ teacher.cardid }}</td>
-        <td>{{ teacher.role }}</td>
-        <td>
-          <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
-          <a href="{% url 'teacher_edit' teacher.id %}" class="btn btn-sm btn-primary">修改</a>
-        </td>
-      </tr>
+        <li class="table-row">
+          <div class="item">
+            <a href="{% url 'teacher_view' teacher.id %}">{{ teacher.realname }}</a>
+          </div>
+          <div class="item">{{ teacher.tel }}</div>
+          <div class="item">{{ teacher.cardid }}</div>
+          <div class="item">{{ teacher.role }}</div>
+          <div class="item">
+            <a href="{% url 'teacher_delete' teacher.id %}" class="btn btn-sm btn-danger">刪除</a>
+            <a href="{% url 'teacher_edit' teacher.id %}" class="btn btn-sm btn-primary">修改</a>
+          </div>
+        </li>
       {% endfor %}
-    </tbody>
-  </table>
+      
+
+    </ul>
+  </div>
+
 </div>
 {% endblock %}
