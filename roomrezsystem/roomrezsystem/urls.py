@@ -14,7 +14,9 @@ urlpatterns = [
     path('student/', include('student.urls')),
     path('classes/', include('classes.urls')),
     path('log/', include('log.urls')),
-    path('check/',include('check.urls'))
+    path('check/',include('check.urls')),
+    path('user/', include('user.urls')),
+
 ]
 
 # 加入靜態檔案的處理規則
