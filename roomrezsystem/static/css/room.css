@@ -8,6 +8,10 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    background-color: rgba(109, 109, 109, 0.4);
+    border-radius: 10px;
+    backdrop-filter:blur(1px);
+    box-shadow: 5px 5px 50px 50px rgba(148, 137, 116, 0.3);
 }
 
 .room .card{
@@ -16,7 +20,7 @@
     width:300px;
     margin:30px;
     padding:10px;
-    background-color: rgb(209, 243, 251);
+    background-color: rgba(150, 150, 150, 0.8);
     font-size: 26px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition:0.5s;
@@ -63,13 +67,13 @@
     line-height:30px; 
     transition: 0.3s;
     text-decoration:none;
-    background-color:rgb(6, 177, 244,0.7);
+    background-color:rgb(150,150,150,0.8);
     border-radius:20px;
     color: rgb(32, 32, 32);
 }
 
 .room-mb-2 a:hover{
-    background-color:rgb(6, 177, 244);
+    background-color:rgb(150,150,150);
 }
 
 .card-header{

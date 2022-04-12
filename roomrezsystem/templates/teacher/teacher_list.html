@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<style>
+.collapse .nav-teacher{
+    background-color: rgb(170, 170, 170);
+}
+</style>
 <div class="teacher-container">
   <div class="mb-1">
     <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">

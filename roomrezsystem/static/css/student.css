@@ -15,14 +15,14 @@
     line-height: 30px;
     transition: 0.3s;
     text-decoration: none;
-    background-color: rgb(113, 215, 255,0.7);
+    background-color: rgb(150,150,150,0.8);
     border-radius: 20px;
     color: rgb(32, 32, 32);
     backdrop-filter: blur(3px);
 }
 
 .mb-1 a:hover{
-    background-color: rgb(113, 215, 255);
+    background-color: rgb(150,150,150);
 }
 
 .student-content{
@@ -33,7 +33,7 @@
 }
 .student-list{
     width: 100%;
-    background-color: rgba(209, 243, 251, 0.5);
+    background-color: rgba(0, 153, 255, 0.1);
     backdrop-filter:blur(3px);
     border-radius:20px;
     box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
@@ -50,6 +50,7 @@
 
 .student-list .table .table-header{
     margin: 10px;
+    height: 50px;
     background-color: aliceblue;
     border-radius:20px;
     font-size:20px;
@@ -66,14 +67,19 @@
 /* ---------- */
 
 .student-list .table .table-row{
-    margin:10px;
+    margin:20px;
     display: flex;
     justify-content:flex-start;
-    background-color: rgba(209, 243, 251, 0.5);
+    height: 50px;
+    background-color: rgba(209, 243, 251, 0.8);
     font-size:20px;
     backdrop-filter:blur(3px);
     border-radius:20px;
     box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.52);
+}
+
+.student-list .table .table-row a{
+    font-size: 23px
 }
 
 .student-list .table .table-row .item{
