@@ -1,5 +1,5 @@
 .teacher-container{
-    margin-top:120px;
+   margin-top: 0px;
 }
 
 .mb-1{
@@ -24,7 +24,7 @@
 }
 
 .teacher-list{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(209, 243, 251, 0.5);
     backdrop-filter:blur(3px);
     border-radius:20px;
     box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
@@ -61,7 +61,7 @@
     margin:10px;
     display: flex;
     justify-content:space-between;
-    background-color: rgb(93, 93, 93,0.7);
+    background-color: rgb(209, 243, 251, 0.5);
     backdrop-filter:blur(3px);
     border-radius:20px;
     box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.52);
@@ -73,8 +73,96 @@
 }
 
 
+.teacher-detail{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.teacher-detail .tea-card-header{
+    width: 95%;
+    text-align: center;
+    padding: 2.5%;
+    backdrop-filter:blur(3px);
+    border-radius: 20px;
+    background-color:rgb(133, 198, 231);
+
+}
+
+.teacher-detail .infor{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.teacher-detail .infor .tea-class-area{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(162, 233, 249, 0.5);
+    backdrop-filter:blur(3px);  
+    border-radius: 20px;
+}
+
+.teacher-detail .infor .tea-job-area{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(162, 233, 249, 0.5);
+    backdrop-filter:blur(3px);  
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.teacher-detail .infor .tea-job-area .tea-job-table{
+    width: 80%;
+}
+
+.teacher-detail .infor .tea-job-area tr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.teacher-detail .tea-log-area{
+    width: 48%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(162, 233, 249, 0.5);
+    backdrop-filter:blur(3px);  
+    border-radius: 20px;
+}
 
 
+.teacher-detail .tea-log-area .log{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+} 
 
+.teacher-detail .loglist{
+    width: 95%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
+.teacher-detail .loglist .name{
+    width: 10%;
+}
+
+.teacher-detail .loglist .class{
+    width: 10%;
+}
+
+.teacher-detail .loglist .time{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
 

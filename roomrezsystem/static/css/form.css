@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .form .card label{
@@ -35,6 +36,11 @@
     padding-right: 0px;
 }
 
+.form .btncol{
+    display: flex;
+    justify-content: center;
+}
+
 
 .form-btn {
     background-color:rgb(6, 177, 244,0.7);
@@ -44,6 +50,18 @@
     margin-left: 40%;
     margin-right: 40%;
     margin-top: 2%;
+  }
+  input[type="submit"].form-btn:hover {
+
+    background-color: rgb(6, 177, 244);
+  }
+
+  .form-delbtn {
+    background-color:rgb(6, 177, 244,0.7);
+    width: 200px;
+    height:40px;
+    border-radius: 8px;
+    margin: 0%;
   }
   input[type="submit"].form-btn:hover {
 

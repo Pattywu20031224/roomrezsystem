@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p class="alert alert-danger">
-    確定要刪除這筆紀錄嗎? <br/>
-    {{ object }}
-</p>
-<form action="" method="post">
-  {% csrf_token %}
-  <input type="submit" class="btn btn-danger" value="是的,我要刪除">
-</form>
+<div class="form">
+  <div class="card">
+    <p class="alert alert-danger">
+        確定要刪除這筆紀錄嗎? <br/>
+        姓名:{{ object.realname }}<br/>
+        卡號:{{ object.cardid }}
+    </p>
+    <form action="" method="post" class="btncol">
+      {% csrf_token %}
+      <input type="submit" class="form-delbtn" value="是的,我要刪除">
+    </form>
+  </div>
+</div>
 {% endblock %}
 
 <!-- 新增一個返回按鈕 -->

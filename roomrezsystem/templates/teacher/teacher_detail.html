@@ -2,13 +2,14 @@
 
 {% block content %}
 <div id="teacher-detail">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">
+  <div class="teacher-detail">
+    <div class="infor">
+      <!--教師資訊 S-->
+      <div class="tea-job-area">
+        <div class="tea-card-header">
           {{ teacher.realname }}
         </div>
-        <table class="table table-sm">
+        <table class="tea-job-table">
           <tr>
             <th>連絡電話</th>
             <td>{{ teacher.tel }}</td>
@@ -22,48 +23,53 @@
             <td>{{ teacher.role }}</td>
           </tr>
         </table>
-        
-        <div class="card">
-            <div class="card-header">
-              <th>任教班級</th>
-            </div>
-            
-          <table class="table table-sm">
-            <tr>
-                {% for classes_list in tea_classes %}
-                <tr>
-                <td>{{ classes_list }}</td>
-                </tr>
-                {% endfor %}
-            </tr>
-          </table>
-        <div class="card">
-            <div class="card-header">
-            <th>借用紀錄</th>
-            </div>
+      </div>
+      <!--教師資訊 E-->  
+          <div class="tea-class-area">
+              <div class="tea-card-header">
+                <th>任教班級</th>
+              </div>
+              
             <table class="table table-sm">
               <tr>
-                  {% for log in teacher.log_set.all %}
-                    <tr>
-                      <td>{{ log.reserve|date:"Y/m/d H:i" }}</td>
-                        <td>
-                          <a href="{% url 'room_view' log.room.id %}">
-                          {{ log.room.name }}
-                          </a>
-                        </td>
-                        <td>
-                          {{ log.teacher.realname }}
-                        </td>
-                      <td>{{ log.end|date:"Y/m/d H:i" }}</td>
-                    </tr>
-                  {% endfor %} 
+                  {% for classes_list in tea_classes %}
+                  <tr>
+                  <td>
+                    <a href="{% url 'classes_view' classes_list.id %}">
+                    {{ classes_list }}</td>
+                  </tr>
+                  {% endfor %}
               </tr>
             </table>
           </div>
-      </div>
     </div>
-    <div class="col-md-8">
-    </div>
+          <!--借用紀錄 s-->
+            <div class="tea-log-area">
+              <div class="tea-card-header">
+              <th>借用紀錄</th>
+              </div>
+                <div class="loglist">
+                  <table>
+                    <tr class="log">
+                        {% for log in teacher.log_set.all %}
+                          <tr class="log">
+                            <td class="class">
+                              <a href="{% url 'room_view' log.room.id %}">
+                              {{ log.room.name }}
+                              </a>
+                            </td>
+                            <td class="name">
+                              {{ log.teacher.realname }}
+                            </td>
+                            <td class="time">{{ log.reserve|date:"Y/m/d H:i" }}</td>
+                            <td class="time">{{ log.end|date:"Y/m/d H:i" }}</td>
+                          </tr>
+                        {% endfor %} 
+                    </tr>
+                  </table>
+                </div>
+            </div>
+            <!--借用紀錄 e-->
   </div>
 </div>
 {% endblock %}

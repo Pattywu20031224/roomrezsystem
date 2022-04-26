@@ -1,34 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mb-2">
-  <a href="{% url 'student_edit' student.id %}" class="btn btn-sm btn-primary">
-    <i class="fas fa-edit"></i> 修改
-  </a>
-  <a href="{% url 'student_delete' student.id %}" class="btn btn-sm btn-danger">
-    <i class="fas fa-trash"></i> 刪除
-  </a>
-</div>
-<div id="student-detail" class="row">
-  <div class="col-md-4">
-    <p>{{ student.realname }}</p>
+<div class="stu-del-container">
+  <div class="stu-mb-2">
+    <a href="{% url 'student_edit' student.id %}" class="btn btn-sm btn-primary">
+      <i class="fas fa-edit"></i> 修改
+    </a>
+    <a href="{% url 'student_delete' student.id %}" class="btn btn-sm btn-danger">
+      <i class="fas fa-trash"></i> 刪除
+    </a>
   </div>
-  <div class="col-sm-8">
-    <div class="card">
-      <div class="card-header">{{ student.cardid }}</div>
-      <table class="table">
-        <tr>
-          <th>學生班級</th>
-          {% for students in stu_classes %}
-            <tr>
-            <td>{{ students }}</td>
-            </tr>
-          {% endfor %} 
-        </tr>
-      </table>
-    </div>
+  <div class="stu-detail">
+    <div class="card-header">學生資料</div>
+    <table class="stu-table">
+      <tr class="stu-item">
+        <th>學生姓名</th>
+        <td>{{ student.realname }}</td>
+      </tr>
+      <tr class="stu-item">
+        <th>學生卡號</th>
+        <td>{{ student.cardid }}</td>
+      </tr>
+    </table>
+        <div class="card-header">學生班級</div>
+        <table class="stu-table">
+          <tr>
+            {% for students in stu_classes %}
+              <tr class="stu-item">
+              <td>{{ students }}</td>
+              </tr>
+            {% endfor %} 
+          </tr>
+        </table>
   </div>
 </div>
-
 
 {% endblock %}

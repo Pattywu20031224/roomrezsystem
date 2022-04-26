@@ -1,27 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 <style>
 .collapse .nav-teacher{
     background-color: rgb(103, 196, 252);
 }
 </style>
-<div class="mb-1">
-  <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
-    <i class="fas fa-user-plus"></i> 新增教師
-  </a>
-</div>
-<div id="teacher-list">
-  <table class="table table-sm">
-    <thead>
-      <tr>
-        <th>姓名</th><th>電話</th><th>卡號</th><th>職稱</th><th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-=======
-
 <div class="teacher-container">
   <div class="mb-1">
     <a href="{% url 'teacher_add' %}" class="btn btn-sm btn-primary">
@@ -41,7 +25,6 @@
       </li>
 
       
->>>>>>> cad74c0b07163019f80d971baa8307c97c306be4
       {% for teacher in teacher_list %}
         <li class="table-row">
           <div class="item">

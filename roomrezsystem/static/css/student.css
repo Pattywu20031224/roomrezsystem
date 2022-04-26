@@ -59,10 +59,15 @@
 }
 
 .student-list .table .table-header .item{
-    width:50%;
+    width:40%;
     text-align:center;
     font-size:22px;
 }
+
+.student-list .table .table-header .btn{
+    width: 10%;
+}
+
 /* ---------- */
 
 .student-list .table .table-row{
@@ -77,7 +82,71 @@
 }
 
 .student-list .table .table-row .item{
-    width:50%;
+    width:40%;
     font-size:22px;
     text-align:center;
+}
+
+.student-list .table .table-row .btn{
+    width: 10%;
+}
+
+.stu-mb-2{
+    height:30px;
+    margin:10px;
+    padding:10px;
+}
+
+.stu-mb-2 a{
+    padding:12px;
+    margin:5px;
+    line-height:30px; 
+    transition: 0.3s;
+    text-decoration:none;
+    background-color:rgb(6, 177, 244,0.7);
+    border-radius:20px;
+    color: rgb(32, 32, 32);
+}
+
+.stu-mb-2 a:hover{
+    background-color:rgb(6, 177, 244);
+}
+
+.stu-del-container{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stu-detail {
+    display: flex;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    flex-direction: column;
+    background-color: rgba(209, 243, 251, 0.5);
+    backdrop-filter:blur(3px);
+    border-radius:20px;
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.52);
+}
+
+.stu-detail .stu-table{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.stu-detail .stu-table tbody{
+    width: 80%;
+}
+
+.stu-detail .stu-table .stu-item{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
 }

@@ -78,19 +78,22 @@ class Reverseroom(LoginRequiredMixin, CreateView):
         logs=Log.objects.filter(room_id=self.kwargs['rid'])
         in_rez=form.instance.reserve
         in_end=form.instance.end
+
+        if ( in_rez < datetime.now(timezone.utc) or in_end <datetime.now(timezone.utc)):
+                form.add_error('reserve',"無法預約過去時間")
+                form.add_error('end',"無法預約過去時間")
+                return super().form_invalid(form)
+        if (in_rez >= in_end ):
+                form.add_error('reserve',"起始時間需在截止時間之前")
+                form.add_error('end',"截止時間需在起始時間之後")
+                return super().form_invalid(form)
         
         for log in logs:
             if (in_rez <= log.end and in_end >= log.reserve) :
                 form.add_error('reserve',"時間衝突")
                 form.add_error('end',"時間衝突")
                 return super().form_invalid(form)
-            if ( in_rez < datetime.now(timezone.utc) or in_end <datetime.now(timezone.utc)):
-                form.add_error('reserve',"無法預約過去時間")
-                form.add_error('end',"無法預約過去時間")
-                return super().form_invalid(form)
-            if (in_rez >= in_end ):
-                form.add_error('reserve',"起始時間需在截止時間之前")
-                form.add_error('end',"截止時間需在起始時間之後")
+            
 
         return super().form_valid(form)
         

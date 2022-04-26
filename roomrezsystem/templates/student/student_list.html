@@ -24,11 +24,23 @@ a {
       <li class="table-header">
         <div class="item">姓名</div>
         <div class="item">卡號</div>
+        <div class="btn"></div>
+        <div class="btn"></div>
       </li>
       {% for student in student_list %}
         <li class="table-row">
           <div class="item" ><a style="color:black;" href="{% url 'student_view' student.id %}">{{ student.realname }}</a></div>
           <div class="item" style="color:black;">{{ student.cardid }}</div>
+          <div class="btn">
+            <a href="{% url 'student_edit' student.id %}" class="btn btn-sm btn-primary">
+            <i class="fas fa-edit"></i> 修改
+            </a>
+          </div>
+          <div class="btn">
+            <a href="{% url 'student_delete' student.id %}" class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i> 刪除
+            </a>
+          </div>
         </li>
             <!---<div class="card-body">
             <div class="card-title">

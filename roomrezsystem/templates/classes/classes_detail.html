@@ -1,47 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mb-2">
-  <a href="{% url 'classes_edit' classes.id %}" class="btn btn-sm btn-primary">
-    <i class="fas fa-edit"></i> 修改
-  </a>
-  <a href="{% url 'classes_delete' classes.id %}" class="btn btn-sm btn-danger">
-    <i class="fas fa-trash"></i> 刪除
-  </a>
-</div>
-<div id="classes-detail" class="row">
-  <div class="col-sm-8">
-    <div class="card">
-      <div class="card-header">{{ classes.name }}</div>
-      
-
-      <table class="table">
-        <tr>
-          <th>班級老師
-          <a href="{% url 'classes_tea_relate' classes.id  %}"><i class="fas fa-user-plus"></i> 新增老師</a>
-          </th>
-          <tbody>
-            {% for teacher in classes.teacher_set.all %}
-            <tr>
-                <td><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a></td>
-                
-            </tr>
-            {% endfor %} 
-          </tbody>
-          <th>班級學生
-          <a href="{% url 'classes_stu_relate' classes.id  %}"><i class="fas fa-user-plus"></i>新增學生</a>
-          </th>
-          <tbody>
-            {% for student in classes.student_set.all %}
-            <tr>
-                <td><a href="{% url 'student_view' student.id %}">{{student.realname}}</a></td> 
-            </tr>
-            {% endfor %} 
-          </tbody>
-        </tr>
-      </table>
-    </div>
+<div class="class-container">
+  <div class="class-mb-2">
+    <a href="{% url 'classes_edit' classes.id %}" class="btn btn-sm btn-primary">
+      <i class="fas fa-edit"></i> 修改
+    </a>
+    <a href="{% url 'classes_delete' classes.id %}" class="btn btn-sm btn-danger">
+      <i class="fas fa-trash"></i> 刪除
+    </a>
+  </div>
+  <div class="class-detail">
+        <div class="card-header">{{ classes.name }}</div>
+        <ul class="class-table">
+            <li class="table-header">
+            <div class="item">班級老師</div>
+            <div class="item">卡號</div>
+            <div class="btn"><a href="{% url 'classes_tea_relate' classes.id  %}"><i class="fas fa-user-plus"></i> 新增老師</a></div>
+            </li>
+              {% for teacher in classes.teacher_set.all %}
+              <li class="table-row">
+                  <div class="item"><a href="{% url 'teacher_view' teacher.id %}">{{teacher.realname}}  </a></div>
+                  <div class="item">{{teacher.cardid}}</div>
+                  <div class="btn"></div>
+              </li>
+              {% endfor %} 
+        </ul>
+        <ul class="class-table">
+            <li class="table-header">
+            <div class="item">班級學生</div>
+            <div class="item">卡號</div>
+            <div class="btn"><a href="{% url 'classes_stu_relate' classes.id  %}"><i class="fas fa-user-plus"></i> 新增學生</a></div>
+            </li>
+              {% for student in classes.student_set.all %}
+              <li class="table-row">
+                  <div class="item"><a href="{% url 'student_view' student.id %}">{{student.realname}}  </a></div>
+                  <div class="item">{{student.cardid}}</div>
+                  <div class="btn"></div>
+              </li>
+              {% endfor %} 
+        </ul>
   </div>
 </div>
-
 {% endblock %}

@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<div id="student-list" class="card-group">
+<div class="student-list">
+  <ul class="table table">
   {% for student in student_list %}
-  
+    
+        <li class="table-row">
+          <div class="item" ><a href="{% url 'classes_relate_student' choosen_classes.id student.id %}">{{ student.realname }}</a></div>
+          <div class="item" style="color:black;">{{ student.cardid }}</div>
+        </li>
+
+    <!--
     <div class="card shadow-sm">
 
         <div class="card-body">
@@ -13,8 +20,9 @@
         </div>
         <div class="card-text">{{ student.cardid }}</div>
         </div>
-    </div>
+    </div>-->
   {% endfor %}
+  </ul>
 </div>
 
 {% endblock %}
